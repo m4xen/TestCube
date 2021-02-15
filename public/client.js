@@ -13,7 +13,7 @@ document.body.appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
-const geometry = new THREE.BoxGeometry(1.5 ,1 ,1);
+const geometry = new THREE.BoxGeometry(1.5 ,1 ,.5);
 
 const cubeMaterials = [ 
     new THREE.MeshBasicMaterial({color:0xff0000, transparent:true, opacity:0.8, side: THREE.DoubleSide}),
@@ -26,6 +26,7 @@ const cubeMaterials = [
 
 const cubeMaterial = new THREE.MeshFaceMaterial(cubeMaterials);
 const cube = new THREE.Mesh(geometry, cubeMaterial);
+cube.position.x = 2;
 scene.add(cube);
 
 window.addEventListener('resize', () => {
