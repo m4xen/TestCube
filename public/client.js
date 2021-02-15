@@ -5,7 +5,10 @@ import Stats from '/jsm/libs/stats.module.js';
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
-camera.position.z = 5;
+camera.position.x = 0;
+camera.position.y = 3;
+camera.position.z = 6;
+
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -13,6 +16,83 @@ document.body.appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
+var building = function(){
+
+    var textureLoader = new THREE.TextureLoader();
+    var wallIMG = textureLoader.load( 'wall.png' );
+    var floorIMG = textureLoader.load( 'floor.png' );
+
+    var CoordinatX = 0;
+    var CoordinatY = 0;
+    var CoordinaZ = 0;
+
+    var wall = function(){
+        const geometry = new THREE.BoxGeometry(15, 6, .5);
+        
+        const cubeMaterials = [ 
+            new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}),
+            new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}), 
+            new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}),
+            new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}), 
+            new THREE.MeshBasicMaterial({ map: wallIMG }), 
+            new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}), 
+        ]; 
+        
+        const cubeMaterial = new THREE.MeshFaceMaterial(cubeMaterials);
+        const cube = new THREE.Mesh(geometry, cubeMaterial);
+        scene.add(cube);
+        
+        cube.position.x = (CoordinatX + 0);
+        cube.position.y = (CoordinatY + 1);
+        cube.position.z = (CoordinaZ - .5);
+    };
+
+    var wallLeft = function(){
+        const geometry = new THREE.BoxGeometry(.5, 6, 7);
+        
+        const cubeMaterials = [ 
+            new THREE.MeshBasicMaterial({ map: wallIMG }), 
+            new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}),
+            new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}), 
+            new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}),
+            new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}), 
+            new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}), 
+        ]; 
+        
+        const cubeMaterial = new THREE.MeshFaceMaterial(cubeMaterials);
+        const cube = new THREE.Mesh(geometry, cubeMaterial);
+        scene.add(cube);
+        
+        cube.position.x = (CoordinatX - 7.25);
+        cube.position.y = (CoordinatY + 1);
+        cube.position.z = (CoordinaZ + 3);
+    };
+
+    var flour = function(){
+        const geometry = new THREE.BoxGeometry(15, .5, 7);
+
+        const cubeMaterials = [ 
+            new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}),
+            new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}), 
+            new THREE.MeshBasicMaterial({ map: floorIMG }),
+            new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}), 
+            new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}), 
+            new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}), 
+        ]; 
+            
+        const cubeMaterial = new THREE.MeshFaceMaterial(cubeMaterials);
+        const cube = new THREE.Mesh(geometry, cubeMaterial);
+        scene.add(cube);
+        
+        cube.position.x = (CoordinatX + 0);
+        cube.position.y = (CoordinatY - 1.75);
+        cube.position.z = (CoordinaZ + 3);
+    };
+
+    wall();
+    wallLeft();
+    flour();
+};
 
 var mounter1 = function(){
 
@@ -306,6 +386,7 @@ var mounter2 = function(){
     info();
 };
 
+building();
 mounter1();
 mounter2();
 
