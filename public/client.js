@@ -103,7 +103,7 @@ var logoIMG = textureLoader.load( 'logo.png' );
 var infoIMG = textureLoader.load( 'info.png' );
 var galleriIMG = textureLoader.load( 'galleri1.png' );
 
-var CoordinatX = -6;
+var CoordinatX = -3;
 var CoordinatY = 0;
 var CoordinaZ = 0;
 
@@ -382,10 +382,106 @@ var mounter2 = function(){
     info();
 };
 
+var mounter3 = function(){
+    //texures / image used
+    var textureLoader = new THREE.TextureLoader();
+    var wallIMG = textureLoader.load( 'wall.jpg' );
+    var logoIMG = textureLoader.load( 'logo.png' );
+    var kommunIMG = textureLoader.load( 'kommun.jpg' );
+    var galleriIMG = textureLoader.load( 'galleri1.png' );
+    var infoIMG = textureLoader.load( 'info.png' );
+    
+    //cordinates to move the stand
+    var CoordinatX = -4;
+    var CoordinatY = 0;
+    var CoordinaZ = -6.75;
+
+    //size for for the stand
+    const wall = new THREE.BoxGeometry( 5 ,3 ,.5 );
+    const logo = new THREE.BoxGeometry( 3.5 ,.5 ,.1 );
+    const kommun = new THREE.BoxGeometry( .5, .5 ,.1 );
+    const galleri = new THREE.BoxGeometry(1.5 ,1 ,.1);
+    const info = new THREE.BoxGeometry(1.5 ,1 ,.1);
+
+    //texture for the diferent pices of the stand
+    const wallmaterial = [ 
+        new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}), 
+        new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}), 
+        new THREE.MeshBasicMaterial({ map: wallIMG }), 
+        new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}), 
+    ]; 
+    const logomaterial = [ 
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({ map: logoIMG }), 
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}),
+    ]; 
+    const kommunmaterial = [ 
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({ map: kommunIMG }), 
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}), 
+    ]; 
+    const gallerimaterial = [ 
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}), 
+        new THREE.MeshBasicMaterial({ map: galleriIMG }), 
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}),
+    ]; 
+    const material = [ 
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}),
+        new THREE.MeshBasicMaterial({ map: infoIMG }), 
+        new THREE.MeshBasicMaterial({color:0xFFA500, side: THREE.DoubleSide}),
+    ]; 
+
+    //Stand peaces position and material
+    const cubeA = new THREE.Mesh( wall, wallmaterial );
+    cubeA.position.set( (CoordinatX - 0), (CoordinatY - 0), (CoordinaZ - 0) );
+    
+    const cubeB = new THREE.Mesh( logo, logomaterial );
+    cubeB.position.set( (CoordinatX + .25), (CoordinatY + 1) , (CoordinaZ + .3) );
+    
+    const cubeC = new THREE.Mesh( kommun, kommunmaterial );
+    cubeC.position.set ( (CoordinatX - 1.75) , (CoordinatY + 1) , (CoordinaZ + .3) );
+
+    const cubeD = new THREE.Mesh( galleri, gallerimaterial );
+    cubeD.position.set( (CoordinatX - 1.25) , (CoordinatY + 0) , (CoordinaZ + .3) );
+
+    const cubeE = new THREE.Mesh( info, material );
+    cubeE.position.set( (CoordinatX + 1.25) , (CoordinatY + 0) , (CoordinaZ + .3) );
+
+    //group the peaces of the stand
+    const group = new THREE.Group();
+    group.add( cubeA );
+    group.add( cubeB );
+    group.add( cubeC );
+    group.add( cubeD );
+    group.add( cubeE );
+
+    //rotation
+    group.rotateY( Math.PI/ 2);
+
+    //add scean
+    scene.add( group );
+
+};
+
+mounter3();
+
 building();
 mounter1();
 mounter2();
-
 
 const stats = Stats();
 document.body.appendChild(stats.dom);
