@@ -470,18 +470,15 @@ var mounter3 = function(){
     group.add( cubeE );
 
     //rotation
-    group.rotateY( Math.PI/ 2);
+    group.rotateY( Math.PI/ 2 );
 
     //add scean
     scene.add( group );
-
 };
-
-mounter3();
-
 building();
 mounter1();
 mounter2();
+mounter3();
 
 const stats = Stats();
 document.body.appendChild(stats.dom);
