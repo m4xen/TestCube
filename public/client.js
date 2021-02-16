@@ -103,7 +103,7 @@ var logoIMG = textureLoader.load( 'logo.png' );
 var infoIMG = textureLoader.load( 'info.png' );
 var galleriIMG = textureLoader.load( 'galleri1.png' );
 
-var CoordinatX = -3;
+var CoordinatX = -6;
 var CoordinatY = 0;
 var CoordinaZ = 0;
 
@@ -310,10 +310,6 @@ var mounter2 = function(){
         
         const cubeMaterial = new THREE.MeshFaceMaterial(cubeMaterials);
         const cube = new THREE.Mesh(geometry, cubeMaterial);
-        
-        cube.position.x = (CoordinatX -1.75);
-        cube.position.y = 1;
-        cube.position.z = .3;
     
         cube.position.x = (CoordinatX -1.75);
         cube.position.y = (CoordinatY + 1);
