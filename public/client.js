@@ -396,12 +396,15 @@ var mounter3 = function(){
     var CoordinatY = 0;
     var CoordinaZ = -6.75;
 
+    //Size for stand
+    var Size = .4;
+
     //size for for the stand
-    const wall = new THREE.BoxGeometry( 5 ,3 ,.5 );
-    const logo = new THREE.BoxGeometry( 3.5 ,.5 ,.1 );
-    const kommun = new THREE.BoxGeometry( .5, .5 ,.1 );
-    const galleri = new THREE.BoxGeometry(1.5 ,1 ,.1);
-    const info = new THREE.BoxGeometry(1.5 ,1 ,.1);
+    const wall = new THREE.BoxGeometry( (5 * Size), (3 * Size), .5 );
+    const logo = new THREE.BoxGeometry( (3.5 * Size), (.5 * Size), .1 );
+    const kommun = new THREE.BoxGeometry( (.5 * Size), (.5 * Size), .1 );
+    const galleri = new THREE.BoxGeometry( (1.5 * Size) ,(1 * Size), .1 );
+    const info = new THREE.BoxGeometry( (1.5 * Size), (1 * Size), .1);
 
     //texture for the diferent pices of the stand
     const wallmaterial = [ 
@@ -446,28 +449,33 @@ var mounter3 = function(){
     ]; 
 
     //Stand peaces position and material
-    const cubeA = new THREE.Mesh( wall, wallmaterial );
-    cubeA.position.set( (CoordinatX - 0), (CoordinatY - 0), (CoordinaZ - 0) );
+    //Stand wall
+    const standWall = new THREE.Mesh( wall, wallmaterial );
+    standWall.position.set( ( CoordinatX - 0 ), ( CoordinatY - 0 ), ( CoordinaZ - 0 ) );
     
-    const cubeB = new THREE.Mesh( logo, logomaterial );
-    cubeB.position.set( (CoordinatX + .25), (CoordinatY + 1) , (CoordinaZ + .3) );
+    //Stand logo
+    const standLogo = new THREE.Mesh( logo, logomaterial );
+    standLogo.position.set( ( CoordinatX + ( .25 * Size) ), ( CoordinatY + ( 1 * Size ) ) , ( CoordinaZ + .3 ) );
     
-    const cubeC = new THREE.Mesh( kommun, kommunmaterial );
-    cubeC.position.set ( (CoordinatX - 1.75) , (CoordinatY + 1) , (CoordinaZ + .3) );
+    //Stand kommun
+    const standKommun = new THREE.Mesh( kommun, kommunmaterial );
+    standKommun.position.set ( (  CoordinatX - ( 1.75  * Size ) ) , ( CoordinatY + ( 1 * Size ) ), ( CoordinaZ + .3 ) );
 
-    const cubeD = new THREE.Mesh( galleri, gallerimaterial );
-    cubeD.position.set( (CoordinatX - 1.25) , (CoordinatY + 0) , (CoordinaZ + .3) );
+    //Stand galleri
+    const standGalleri = new THREE.Mesh( galleri, gallerimaterial );
+    standGalleri.position.set( ( CoordinatX - ( 1.25 * Size) ) , ( CoordinatY + 0 ) , ( CoordinaZ + .3 ) );
 
-    const cubeE = new THREE.Mesh( info, material );
-    cubeE.position.set( (CoordinatX + 1.25) , (CoordinatY + 0) , (CoordinaZ + .3) );
+    //Stand info
+    const standInfo = new THREE.Mesh( info, material );
+    standInfo.position.set( ( CoordinatX + ( 1.25 * Size ) ) , ( CoordinatY + 0 ) , ( CoordinaZ + .3 ) );
 
     //group the peaces of the stand
     const group = new THREE.Group();
-    group.add( cubeA );
-    group.add( cubeB );
-    group.add( cubeC );
-    group.add( cubeD );
-    group.add( cubeE );
+    group.add( standWall );
+    group.add( standLogo );
+    group.add( standKommun );
+    group.add( standGalleri );
+    group.add( standInfo );
 
     //rotation
     group.rotateY( Math.PI/ 2 );
@@ -475,6 +483,7 @@ var mounter3 = function(){
     //add scean
     scene.add( group );
 };
+
 building();
 mounter1();
 mounter2();
