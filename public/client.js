@@ -94,7 +94,7 @@ var building = function(){
     flour();
 };
 
-var mounter1 = function(){
+var stand1 = function(){
 
 var textureLoader = new THREE.TextureLoader();
 var wallIMG = textureLoader.load( 'wall.jpg' );
@@ -240,7 +240,7 @@ galleri();
 info();
 };
 
-var mounter2 = function(){
+var stand2 = function(){
 
     var textureLoader = new THREE.TextureLoader();
     var wallIMG = textureLoader.load( 'wall.jpg' );
@@ -382,7 +382,7 @@ var mounter2 = function(){
     info();
 };
 
-var mounter3 = function(){
+var stand3 = function(){
     //texures / image used
     var textureLoader = new THREE.TextureLoader();
     var wallIMG = textureLoader.load( 'wall.jpg' );
@@ -485,9 +485,9 @@ var mounter3 = function(){
 };
 
 building();
-mounter1();
-mounter2();
-mounter3();
+stand1();
+stand2();
+stand3();
 
 const stats = Stats();
 document.body.appendChild(stats.dom);
