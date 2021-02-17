@@ -48,7 +48,7 @@ var building = function(){
     };
 
     var wallLeft = function(){
-        const geometry = new THREE.BoxGeometry(.5, 6, 7);
+        const geometry = new THREE.BoxGeometry(.5, 6, 8);
         
         const cubeMaterials = [ 
             new THREE.MeshBasicMaterial({ map: wallIMG }), 
@@ -63,13 +63,13 @@ var building = function(){
         const cube = new THREE.Mesh(geometry, cubeMaterial);
         scene.add(cube);
         
-        cube.position.x = (CoordinatX - 7.25);
-        cube.position.y = (CoordinatY + 1);
-        cube.position.z = (CoordinaZ + 3);
+        cube.position.x = ( CoordinatX - 7.25 );
+        cube.position.y = ( CoordinatY + 1 );
+        cube.position.z = ( CoordinaZ + 3.75 );
     };
 
     var flour = function(){
-        const geometry = new THREE.BoxGeometry(15, .5, 7);
+        const geometry = new THREE.BoxGeometry(15, .5, 8);
 
         const cubeMaterials = [ 
             new THREE.MeshBasicMaterial({color:0x808080, transparent:true, side: THREE.DoubleSide}),
@@ -82,11 +82,11 @@ var building = function(){
             
         const cubeMaterial = new THREE.MeshFaceMaterial(cubeMaterials);
         const cube = new THREE.Mesh(geometry, cubeMaterial);
-        scene.add(cube);
+        scene.add( cube );
         
-        cube.position.x = (CoordinatX + 0);
-        cube.position.y = (CoordinatY - 1.75);
-        cube.position.z = (CoordinaZ + 3);
+        cube.position.x = ( CoordinatX + 0 );
+        cube.position.y = ( CoordinatY - 1.75 );
+        cube.position.z = ( CoordinaZ + 3.75 );
     };
 
     wall();
@@ -397,7 +397,7 @@ var mounter3 = function(){
     var CoordinaZ = -6.75;
 
     //Size for stand
-    var Size = .4;
+    var Size = 1;
 
     //size for for the stand
     const wall = new THREE.BoxGeometry( (5 * Size), (3 * Size), .5 );
