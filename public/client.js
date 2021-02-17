@@ -400,11 +400,11 @@ var mounter3 = function(){
     var Size = 1;
 
     //size for for the stand
-    const wall = new THREE.BoxGeometry( (5 * Size), (3 * Size), .5 );
-    const logo = new THREE.BoxGeometry( (3.5 * Size), (.5 * Size), .1 );
-    const kommun = new THREE.BoxGeometry( (.5 * Size), (.5 * Size), .1 );
-    const galleri = new THREE.BoxGeometry( (1.5 * Size) ,(1 * Size), .1 );
-    const info = new THREE.BoxGeometry( (1.5 * Size), (1 * Size), .1);
+    const wall = new THREE.BoxGeometry( ( 5 * Size ), ( 3 * Size ), .5 );
+    const logo = new THREE.BoxGeometry( ( 3.5 * Size ), ( .5 * Size ), .1 );
+    const kommun = new THREE.BoxGeometry( ( .5 * Size ), ( .5 * Size ), .1 );
+    const galleri = new THREE.BoxGeometry( ( 1.5 * Size ), ( 1 * Size ), .1 );
+    const info = new THREE.BoxGeometry( ( 1.5 * Size ), ( 1 * Size ), .1 );
 
     //texture for the diferent pices of the stand
     const wallmaterial = [ 
